@@ -28,5 +28,10 @@ namespace WindowsFormsApplication6
             rules f = new rules();
             f.Show();
         }
+
+        private void home_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

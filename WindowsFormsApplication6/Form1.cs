@@ -11,15 +11,16 @@ using System.Threading;
 
 namespace WindowsFormsApplication6
 {
+    //form 1 coding 
     public partial class Form1 : Form
     {
         public int players = 3;
         public int counter1 = 0;
         public int flag1=0, flag2=0, flag3=0, flag4=0;
         public int num;
-        Joe joe_ob = new Joe();
-        Bob bob_ob = new Bob();
-        Al al_ob = new Al();
+        simu simu_ob = new simu();
+        navjot navjot_ob = new navjot();
+        amit amit_ob = new amit();
 
         public Form1()
         {
@@ -28,24 +29,27 @@ namespace WindowsFormsApplication6
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            pictureBox1.ImageLocation = @"Images\Track1.png";
+            pictureBox1.ImageLocation = @"Images\baby.jpg";
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            joe_ob.amount = 50;
-            joe_ob.joe_bet_amount = 0;
-            joe_ob.joe_bet_runner = 0;
-            bob_ob.amount = 50;
-            bob_ob.bob_bet_amount = 0;
-            bob_ob.bob_bet_runner = 0;
-            al_ob.amount = 50;
-            al_ob.al_bet_amount = 0;
-            al_ob.al_bet_runner = 0;
+            simu_ob.amount = 50;
+            simu_ob.joe_bet_amount = 0;
+            simu_ob.simu_bet_runner = 0;
+            navjot_ob.amount = 50;
+            navjot_ob.navjot_bet_amount = 0;
+            navjot_ob.navjot_bet_runner = 0;
+            amit_ob.amount = 50;
+            amit_ob.amit_bet_amount = 0;
+            amit_ob.amit_bet_runner = 0;
 
             numericUpDown1.Value = 1;
             numericUpDown2.Value = 1;
+
+            label1.Text = "";
+            label2.Text = "";
 
             textBox1.Text = "";
             textBox2.Text = "";
@@ -57,52 +61,52 @@ namespace WindowsFormsApplication6
             pictureBox5.Location = new Point(50, pictureBox5.Location.Y);
             counter1 = 0;
         }
-
+        //radio button coding is here
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             numericUpDown1.Value = 1;
             numericUpDown2.Value = 1;
-            if (joe_ob.amount == 0)
+            if (simu_ob.amount == 0)
             {
                 numericUpDown1.Value = 1;
                 label2.Text = Convert.ToString("$"+0);
             }
             else
             {
-                numericUpDown1.Maximum = joe_ob.amount;
-                label2.Text = Convert.ToString("$"+joe_ob.amount);
+                numericUpDown1.Maximum = simu_ob.amount;
+                label2.Text = Convert.ToString("$"+simu_ob.amount);
             }
         }
-
+        //radio button coding is here
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             numericUpDown1.Value = 1;
             numericUpDown2.Value = 1;
-            if (bob_ob.amount == 0)
+            if (navjot_ob.amount == 0)
             {
                 numericUpDown1.Value = 1;
                 label2.Text = Convert.ToString("$"+0);
             }
             else
             {
-                numericUpDown1.Maximum = bob_ob.amount;
-                label2.Text = Convert.ToString("$"+bob_ob.amount);
+                numericUpDown1.Maximum = navjot_ob.amount;
+                label2.Text = Convert.ToString("$"+navjot_ob.amount);
             }
         }
-
+        //radio button coding is here
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
             numericUpDown1.Value = 1;
             numericUpDown2.Value = 1;
-            if (al_ob.amount == 0)
+            if (amit_ob.amount == 0)
             {
                 numericUpDown1.Value = 1;
                 label2.Text = Convert.ToString("$"+0);
             }
             else
             {
-                numericUpDown1.Maximum = al_ob.amount;
-                label2.Text = Convert.ToString("$"+al_ob.amount);
+                numericUpDown1.Maximum = amit_ob.amount;
+                label2.Text = Convert.ToString("$"+amit_ob.amount);
             }
         }
         int flag = 0;
@@ -110,52 +114,52 @@ namespace WindowsFormsApplication6
         {
             if (radioButton1.Checked == true)
             {
-                if (joe_ob.joe_bet_runner != 0)
+                if (simu_ob.simu_bet_runner != 0)
                 {
-                    MessageBox.Show("You already placed a bet");
+                    MessageBox.Show("You already put the money");
                 }
                 else
                 {
-                    label1.Text = "Amount After Bet for Joe";
-                    joe_ob.joe_bet_amount = Convert.ToInt16(numericUpDown1.Value);
-                    joe_ob.joe_bet_runner = Convert.ToInt16(numericUpDown2.Value);
-                    joe_ob.amount = joe_ob.amount - joe_ob.joe_bet_amount;
-                    label2.Text = joe_ob.amount.ToString();
-                    textBox1.Text = "Joe bets $" + joe_ob.joe_bet_amount + " on runner " + joe_ob.joe_bet_runner;
+                    label1.Text = "money left for simu";
+                    simu_ob.joe_bet_amount = Convert.ToInt16(numericUpDown1.Value);
+                    simu_ob.simu_bet_runner = Convert.ToInt16(numericUpDown2.Value);
+                    simu_ob.amount = simu_ob.amount - simu_ob.joe_bet_amount;
+                    label2.Text = simu_ob.amount.ToString();
+                    textBox1.Text = " bets $" + simu_ob.joe_bet_amount + " on runner " + simu_ob.simu_bet_runner;
                 }
                 flag++;
             }
             else if (radioButton2.Checked==true)
             {
-                if (bob_ob.bob_bet_runner != 0)
+                if (navjot_ob.navjot_bet_runner != 0)
                 {
-                    MessageBox.Show("You already placed a bet");
+                    MessageBox.Show("You already put the money");
                 }
                 else
                 {
-                    label1.Text = "Amount After Bet for Bob";
-                    bob_ob.bob_bet_amount = Convert.ToInt16(numericUpDown1.Value);
-                    bob_ob.bob_bet_runner = Convert.ToInt16(numericUpDown2.Value);
-                    bob_ob.amount = bob_ob.amount - bob_ob.bob_bet_amount;
-                    label2.Text = bob_ob.amount.ToString();
-                    textBox2.Text = "Bob bets $" + bob_ob.bob_bet_amount + " on runner " + bob_ob.bob_bet_runner;
+                    label1.Text = "money left for navjot";
+                    navjot_ob.navjot_bet_amount = Convert.ToInt16(numericUpDown1.Value);
+                    navjot_ob.navjot_bet_runner = Convert.ToInt16(numericUpDown2.Value);
+                    navjot_ob.amount = navjot_ob.amount - navjot_ob.navjot_bet_amount;
+                    label2.Text = navjot_ob.amount.ToString();
+                    textBox2.Text = "Bob bets $" + navjot_ob.navjot_bet_amount + " on runner " + navjot_ob.navjot_bet_runner;
                 }
                 flag++;
             }
             else if (radioButton3.Checked==true)
             {
-                if (al_ob.al_bet_runner!=0)
+                if (amit_ob.amit_bet_runner!=0)
                 {
-                    MessageBox.Show("You already placed a bet");
+                    MessageBox.Show("You already put the money");
                 }
                 else
                 {
-                    label1.Text = "Amount After Bet for Al";
-                    al_ob.al_bet_amount = Convert.ToInt16(numericUpDown1.Value);
-                    al_ob.al_bet_runner = Convert.ToInt16(numericUpDown2.Value);
-                    al_ob.amount = al_ob.amount - al_ob.al_bet_amount;
-                    label2.Text = al_ob.amount.ToString();
-                    textBox3.Text = "Al bets $" + al_ob.al_bet_amount + " on runner " + al_ob.al_bet_runner;
+                    label1.Text = "money left for amit";
+                    amit_ob.amit_bet_amount = Convert.ToInt16(numericUpDown1.Value);
+                    amit_ob.amit_bet_runner = Convert.ToInt16(numericUpDown2.Value);
+                    amit_ob.amount = amit_ob.amount - amit_ob.amit_bet_amount;
+                    label2.Text = amit_ob.amount.ToString();
+                    textBox3.Text = "amit bets $" + amit_ob.amit_bet_amount + " on runner " + amit_ob.amit_bet_runner;
                 }
                 flag++;
             }
@@ -166,6 +170,11 @@ namespace WindowsFormsApplication6
            
         }
 
+        private void radioButton1_CheckedChanged_1(object sender, EventArgs e)
+        {
+
+        }
+        //button 2 coding
         private void button2_Click(object sender, EventArgs e)
         {
 
@@ -210,22 +219,22 @@ namespace WindowsFormsApplication6
 
                 MessageBox.Show("Winning bet is " + num);
 
-                if (joe_ob.joe_bet_runner == num)
+                if (simu_ob.simu_bet_runner == num)
                 {
-                    joe_ob.amount = joe_ob.amount + joe_ob.joe_bet_amount;
+                    simu_ob.amount = simu_ob.amount + simu_ob.joe_bet_amount;
                 }
 
-                if (bob_ob.bob_bet_runner == num)
+                if (navjot_ob.navjot_bet_runner == num)
                 {
-                    bob_ob.amount = bob_ob.amount + bob_ob.bob_bet_amount;
+                    navjot_ob.amount = navjot_ob.amount + navjot_ob.navjot_bet_amount;
                 }
 
-                if (al_ob.al_bet_runner == num)
+                if (amit_ob.amit_bet_runner == num)
                 {
-                    al_ob.amount = al_ob.amount + al_ob.al_bet_amount;
+                    amit_ob.amount = amit_ob.amount + amit_ob.amit_bet_amount;
                 }
 
-                if (joe_ob.amount == 0)
+                if (simu_ob.amount == 0)
                 {
                     radioButton1.Enabled = false;
                     textBox1.Text = "Busted";
@@ -233,7 +242,7 @@ namespace WindowsFormsApplication6
                     players--;
                 }
 
-                if (bob_ob.amount == 0)
+                if (navjot_ob.amount == 0)
                 {
                     radioButton2.Enabled = false;
                     textBox2.Text = "Busted";
@@ -241,7 +250,7 @@ namespace WindowsFormsApplication6
                     players--;
                 }
 
-                if (al_ob.amount == 0)
+                if (amit_ob.amount == 0)
                 {
                     radioButton3.Enabled = false;
                     textBox3.Text = "Busted";
@@ -267,12 +276,12 @@ namespace WindowsFormsApplication6
                     button1.Enabled = false;
                     button2.Enabled = false;
                 }
-                joe_ob.joe_bet_amount = 0;
-                joe_ob.joe_bet_runner = 0;
-                bob_ob.bob_bet_amount = 0;
-                bob_ob.bob_bet_runner = 0;
-                al_ob.al_bet_amount = 0;
-                al_ob.al_bet_runner = 0;
+                simu_ob.joe_bet_amount = 0;
+                simu_ob.simu_bet_runner = 0;
+                navjot_ob.navjot_bet_amount = 0;
+                navjot_ob.navjot_bet_runner = 0;
+                amit_ob.amit_bet_amount = 0;
+                amit_ob.amit_bet_runner = 0;
 
                 textBox1.Text = "";
                 textBox2.Text = "";

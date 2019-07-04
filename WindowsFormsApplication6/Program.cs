@@ -9,7 +9,7 @@ namespace WindowsFormsApplication6
     static class Program
     {
         /// <summary>
-        /// The main entry point for the application.
+        /// important part of the application.
         /// </summary>
         [STAThread]
         static void Main()
